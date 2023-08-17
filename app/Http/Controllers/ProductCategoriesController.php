@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductTypeStoreRequest;
-use App\Http\Requests\ProductTypeUpdateRequest;
-use App\Models\ProductType;
+use App\Http\Requests\ProductCategoryStoreRequest;
+use App\Http\Requests\ProductCategoryUpdateRequest;
+use App\Models\ProductCategories;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class ProductTypeController extends Controller
+class ProductCategoriesController extends Controller
 {
     /**
      * Handle permission of this resource controller.
      */
     public function __construct()
     {
-        $this->authorizeResource(ProductType::class, 'product_type');
+        $this->authorizeResource(ProductCategories::class, 'product_category');
     }
 
     /**
@@ -36,7 +36,7 @@ class ProductTypeController extends Controller
                 'active' => false
             ],
             [
-                'name' => 'Product Types',
+                'name' => 'Product Categories',
                 'url' => '#',
                 'active' => true
             ],
@@ -46,16 +46,16 @@ class ProductTypeController extends Controller
         $perPage = $request->get('per_page', 10);
         $sort = $request->get('sort');
 
-        $productTypes = QueryBuilder::for(ProductType::class)
+        $productCategories = QueryBuilder::for(ProductCategories::class)
             ->allowedSorts(['name'])
             ->where('name', 'like', "%$q%")
             ->paginate($perPage)
             ->appends(['per_page' => $perPage, 'q' => $q, 'sort' => $sort]);
 
-        return view('product-types.index', [
-            'productTypes' => $productTypes,
+        return view('product-categories.index', [
+            'productCategories' => $productCategories,
             'breadcrumbItems' => $breadcrumbsItems,
-            'pageTitle' => 'Product Types'
+            'pageTitle' => 'Product Categories'
         ]);
     }
 
@@ -74,45 +74,45 @@ class ProductTypeController extends Controller
                 'active' => false
             ],
             [
-                'name' => 'Product Types',
-                'url' => route('product-types.index'),
+                'name' => 'Product Categories',
+                'url' => route('product-categories.index'),
                 'active' => false
             ],
             [
-                'name' => 'Create Product Type',
+                'name' => 'Create Product Categories',
                 'url' => '#',
                 'active' => true
             ],
         ];
 
-        return view('product-types.create', [
+        return view('product-categories.create', [
             'breadcrumbItems' => $breadcrumbsItems,
-            'pageTitle' => 'Create Product Type'
+            'pageTitle' => 'Create Product Categories'
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  ProductTypeStoreRequest  $request
+     * @param  ProductCategoryStoreRequest  $request
      * @return RedirectResponse
      *
      */
-    public function store(ProductTypeStoreRequest $request)
+    public function store(ProductCategoryStoreRequest $request)
     {
-        $productType = ProductType::create($request->validated());
+        $productCategory = ProductCategories::create($request->validated());
 
-        return redirect()->route('product-types.index')->with('message', 'Product type created successfully');
+        return redirect()->route('product-categories.index')->with('message', 'Product categories created successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  ProductType $productType
+     * @param  ProductCategories $productCategory
      * @return Application|Factory|View
      *
      */
-    public function edit(ProductType $productType)
+    public function edit(ProductCategories $productCategory)
     {
         $breadcrumbsItems = [
             [
@@ -121,49 +121,50 @@ class ProductTypeController extends Controller
                 'active' => false
             ],
             [
-                'name' => 'Product Types',
-                'url' => route('product-types.index'),
+                'name' => 'Product Categories',
+                'url' => route('product-categories.index'),
                 'active' => false
             ],
             [
-                'name' => 'Edit Product Type',
+                'name' => 'Edit Product Categories',
                 'url' => '#',
                 'active' => true
             ],
         ];
 
-        return view('product-types.edit', [
-            'productType' => $productType,
+        return view('product-categories.edit', [
+            'productCategory' => $productCategory,
             'breadcrumbItems' => $breadcrumbsItems,
-            'pageTitle' => 'Edit Product Type'
+            'pageTitle' => 'Edit Product Categories'
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  ProductTypeUpdateRequest $request
-     * @param  ProductType $productType
+     * @param  ProductCategoryUpdateRequest $request
+     * @param  ProductCategories $productCategory
      * @return RedirectResponse
      *
      */
-    public function update(ProductTypeUpdateRequest $request, ProductType $productType)
+    public function update(ProductCategoryUpdateRequest $request, ProductCategories $productCategory)
     {
-        $productType->update($request->validated());
+        $productCategory->update($request->validated());
 
-        return redirect()->route('product-types.index')->with('message', 'Product type updated successfully');
+        return redirect()->route('product-categories.index')->with('message', 'Product categories updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  ProductType $productType
+     * @param  ProductCategories $productCategory
      * @return RedirectResponse
      *
      */
-    public function destroy(ProductType $productType)
+    public function destroy(ProductCategories $productCategory)
     {
-        $productType->delete();
-        return redirect()->route('product-types.index')->with('message', 'Product type deleted successfully');
+        $productCategory->delete();
+
+        return redirect()->route('product-categories.index')->with('message', 'Product categories deleted successfully');
     }
 }

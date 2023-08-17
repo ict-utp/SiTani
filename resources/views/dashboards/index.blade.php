@@ -81,25 +81,4 @@
 
     </div>
 
-
-    @push('scripts')
-    @vite(['resources/js/plugins/jquery-jvectormap-2.0.5.min.js'])
-    @vite(['resources/js/plugins/jquery-jvectormap-world-mill-en.js'])
-    @vite(['resources/js/custom/chart-active.js'])
-    <script type="module">
-          $("#world-map").vectorMap({
-            map: "world_mill_en",
-            normalizeFunction: "polynomial",
-            hoverOpacity: 0.7,
-            hoverColor: false,
-
-            regionStyle: {
-            initial: { fill: "#8092FF" },
-            hover: { fill: "#4669fa", "fill-opacity": 1 },
-            },
-
-            backgroundColor: "transparent",
-        });
-    </script>
-    @endpush
 </x-app-layout>

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ChartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
@@ -12,6 +11,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\DatabaseBackupController;
 use App\Http\Controllers\GeneralSettingController;
+use App\Http\Controllers\ProductCategoriesController;
 
 require __DIR__ . '/auth.php';
 
@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     // Promotions
     Route::resource('owners', OwnerController::class)->except('show');
     Route::resource('product-types', ProductTypeController::class)->except('show');
+    Route::resource('product-categories', ProductCategoriesController::class)->except('show');
 
     // User
     Route::resource('users', UserController::class);

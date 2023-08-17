@@ -43,7 +43,7 @@
                         <a href="#" class="navItem">{{ __('Product') }}</a>
                     </li>
                     <li>
-                        <a href="#" class="navItem">{{ __('Categories') }}
+                        <a href="{{ route('product-categories.index') }}" class="navItem {{ (request()->is('product-categories*')) ? 'active' : '' }}">{{ __('Categories') }}
                         </a>
                     </li>
                     <li>
