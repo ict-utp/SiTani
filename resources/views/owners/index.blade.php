@@ -49,10 +49,10 @@
                                             {{ __('ID') }}
                                         </th>
                                         <th scope="col" class="table-th ">
-                                            {{ __('Name Owner') }}
+                                            {{ __('Name') }}
                                         </th>
                                         <th scope="col" class="table-th ">
-                                            {{ __('Phone Owner') }}
+                                            {{ __('Phone') }}
                                         </th>
                                         <th scope="col" class="table-th ">
                                             {{ __('Address Owner') }}

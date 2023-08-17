@@ -20,7 +20,7 @@
             <form method="POST" action="{{ route('password.email') }}">
                 @csrf
                 {{-- Email --}}
-                <div class="mt-3 formGroup">
+                <div class="mt-3 formGroup mb-3">
                     <label for="email" class="block capitalize form-label">
                         {{ __('Email') }}
                     </label>
@@ -34,8 +34,9 @@
                 </div>
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
-                <button type="submit" class="btn btn-dark block w-full text-center mt-3">
-                    <iconify-icon icon="mingcute:send-fill"></iconify-icon> {{ __('Send recovery email') }}
+                <button type="submit" class="btn inline-flex justify-center btn-dark items-center w-full text-center">
+                    <iconify-icon icon="mingcute:send-fill" class="ltr:mr-2 rtl:ml-2"></iconify-icon> 
+                    <span>{{ __('Send recovery email') }}</span>
                 </button>
             </form>
             <div class="md:max-w-[345px] mx-auto font-normal text-slate-500 dark:text-slate-400 mt-8 uppercase text-sm text-center">

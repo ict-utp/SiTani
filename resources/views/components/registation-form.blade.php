@@ -81,7 +81,8 @@
         <x-input-error :messages="$errors->get('terms')" class="mt-2" />
     </div>
 
-    <button type="submit" class="btn btn-dark block items-center justify-center w-full text-center">
-        <iconify-icon icon="mdi:register-outline"></iconify-icon> {{ __('Create an account') }}
+    <button type="submit" class="btn inline-flex justify-center btn-dark items-center w-full text-center">
+        <iconify-icon icon="solar:user-plus-bold-duotone" class="ltr:mr-2 rtl:ml-2"></iconify-icon> 
+        <span>{{ __('Create an account') }}</span>
     </button>
 </form>

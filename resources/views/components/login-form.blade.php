@@ -44,8 +44,9 @@
         </a>
     </div>
 
-    <button type="submit" class="btn btn-dark block justify-center items-center w-full text-center">
-                <iconify-icon icon="ion:log-in"></iconify-icon>
-        {{ __('Log In') }}
+    <button type="submit" class="btn inline-flex justify-center btn-dark items-center w-full text-center">
+        <iconify-icon class="ltr:mr-2 rtl:ml-2" icon="solar:login-3-bold-duotone"></iconify-icon>
+        <span>{{ __('Log In') }}</span>
     </button>
+
 </form>

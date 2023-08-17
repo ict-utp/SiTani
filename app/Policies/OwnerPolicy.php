@@ -71,7 +71,7 @@ class OwnerPolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  User   $owner
+     * @param  User   $user
      * @param  Owner  $model
      * @return bool
      */
@@ -86,7 +86,7 @@ class OwnerPolicy
     /**
      * Determine whether the user can restore the model.
      *
-     * @param  User   $owner
+     * @param  User   $user
      * @param  Owner  $model
      * @return void
      */
@@ -98,7 +98,7 @@ class OwnerPolicy
     /**
      * Determine whether the user can permanently delete the model.
      *
-     * @param  User   $owner
+     * @param  User   $user
      * @param  Owner  $model
      * @return void
      */
@@ -111,7 +111,7 @@ class OwnerPolicy
     /**
      * Determine whether the user can delete two or more users at a time.
      *
-     * @param  User $owner
+     * @param  User $user
      * @return bool
      */
     public function destroyMany(User $user): bool

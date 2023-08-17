@@ -12,6 +12,7 @@ export default defineConfig({
                 "resources/js/custom/chart-active.js",
                 "resources/js/main.js",
                 "resources/js/app.js",
+                "resources/js/auth.js",
             ],
             refresh: true,
         }),

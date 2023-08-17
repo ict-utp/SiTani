@@ -24,16 +24,43 @@
             <li>
                 <a href="{{ route('dashboard.index') }}" class="navItem {{ (\Request::route()->getName() == 'dashboard.index') ? 'active' : '' }}">
                     <span class="flex items-center">
-                        <iconify-icon class="nav-icon" icon="heroicons-outline:home"></iconify-icon>
+                        <iconify-icon class="nav-icon" icon="ant-design:home-twotone"></iconify-icon>
                         <span>{{ __('Dashboard') }}</span>
                     </span>
                 </a>
+            </li>
+
+            <li class="{{ (request()->is('product*')) || (request()->is('product-types*')) ? 'active' : '' }}">
+                <a href="#" class="navItem">
+                    <span class="flex items-center">
+                        <iconify-icon class=" nav-icon" icon="solar:box-minimalistic-bold-duotone"></iconify-icon>
+                        <span>{{ __('Promotions') }}</span>
+                    </span>
+                    <iconify-icon class="icon-arrow" icon="heroicons-outline:chevron-right"></iconify-icon>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="#" class="navItem">{{ __('Product') }}</a>
+                    </li>
+                    <li>
+                        <a href="#" class="navItem">{{ __('Categories') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('product-types.index') }}" class="navItem {{ (request()->is('product-types*')) ? 'active' : '' }}">{{ __('Type') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('owners.index') }}" class="navItem {{ (request()->is('owners*')) ? 'active' : '' }}">{{ __('Owner') }}
+                        </a>
+                    </li>
+                </ul>
             </li>
             
             <li class="{{ (request()->is('users*')) || (request()->is('profiles*')) || (request()->is('roles*')) || (request()->is('permissions*')) ? 'active' : '' }}">
                 <a href="#" class="navItem">
                     <span class="flex items-center">
-                        <iconify-icon class=" nav-icon" icon="heroicons-outline:users"></iconify-icon>
+                        <iconify-icon class="nav-icon" icon="solar:users-group-two-rounded-bold-duotone"></iconify-icon>
                         <span>{{ __('Users') }}</span>
                     </span>
                     <iconify-icon class="icon-arrow" icon="heroicons-outline:chevron-right"></iconify-icon>
@@ -56,11 +83,12 @@
                     </li>
                 </ul>
             </li>
+
             <li>
                 <a href="{{ route('general-settings.show') }}"
                    class="navItem {{ (request()->is('general-settings*')) || (request()->is('database-backups*')) ? 'active' : '' }}">
                     <span class="flex items-center">
-                        <iconify-icon class=" nav-icon" icon="material-symbols:settings-outline"></iconify-icon>
+                        <iconify-icon class="nav-icon" icon="solar:settings-bold-duotone"></iconify-icon>
                         <span>{{ __('Settings') }}</span>
                     </span>
                 </a>

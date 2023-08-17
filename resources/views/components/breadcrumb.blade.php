@@ -10,10 +10,10 @@
         {{--Home--}}
         @empty(!$breadcrumbItems)
             <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter">
-                <a href="{{ route('dashboard.index') }}" class="breadcrumbList text-sm">
-                    <iconify-icon icon="heroicons-outline:home"></iconify-icon>
+                <a href="{{ route('dashboard.index') }}" class="breadcrumbList text-sm justify-center items-center">
+                    <iconify-icon icon="ant-design:home-twotone"></iconify-icon>
                 </a>
-                <iconify-icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></iconify-icon>
+                <iconify-icon icon="heroicons-outline:chevron-right" class="text-slate-500 text-sm rtl:rotate-180"></iconify-icon>
             </li>
         @endempty
 

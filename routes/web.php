@@ -9,6 +9,7 @@ use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SetLocaleController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\DatabaseBackupController;
 use App\Http\Controllers\GeneralSettingController;
 
@@ -25,6 +26,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     // Promotions
     Route::resource('owners', OwnerController::class)->except('show');
+    Route::resource('product-types', ProductTypeController::class)->except('show');
 
     // User
     Route::resource('users', UserController::class);
@@ -46,6 +48,3 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::resource('database-backups', DatabaseBackupController::class);
     Route::get('database-backups-download/{fileName}', [DatabaseBackupController::class, 'databaseBackupDownload'])->name('database-backups.download');
 });
-
-
-
