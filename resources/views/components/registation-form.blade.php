@@ -10,9 +10,9 @@
             <input type="text" name="name" id="name"
                 class="form-control py-2 @error('name') !border !border-red-500 @enderror"
                 placeholder="{{ __('Enter your full name') }}" required autofocus value="{{ old('name') }}">
-                <span class="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-full border-l border-l-slate-200 dark:border-l-slate-700 flex items-center justify-center dark:text-white">
-                    <iconify-icon icon="heroicons-outline:user"></iconify-icon>
-                </span>
+            <span class="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-full border-l border-l-slate-200 dark:border-l-slate-700 flex items-center justify-center dark:text-white">
+                <iconify-icon icon="heroicons-outline:user"></iconify-icon>
+            </span>
         </div>
         <x-input-error :messages="$errors->get('name')" class="mt-2" />
     </div>
@@ -26,9 +26,9 @@
             <input type="email" name="email" id="email"
                 class="form-control py-2 @error('email') !border !border-red-500 @enderror"
                 placeholder="{{ __('Enter your email') }}" required value="{{ old('email') }}">
-                <span class="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-full border-l border-l-slate-200 dark:border-l-slate-700 flex items-center justify-center dark:text-white">
-                    <iconify-icon icon="heroicons-outline:mail"></iconify-icon>
-                </span>
+            <span class="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-full border-l border-l-slate-200 dark:border-l-slate-700 flex items-center justify-center dark:text-white">
+                <iconify-icon icon="heroicons-outline:mail"></iconify-icon>
+            </span>
         </div>
         <x-input-error :messages="$errors->get('email')" class="mt-2" />
     </div>
@@ -42,12 +42,12 @@
             <input type="password" name="password" id="password"
                 class="form-control py-2 passwordfield @error('password') !border !border-red-500 @enderror"
                 placeholder="{{ __('Enter your password') }}" required autocomplete="new-password">
-                <span class="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-full border-l border-l-slate-200 dark:border-l-slate-700 flex items-center justify-center cursor-pointer dark:text-white" id="toggleIcon">
-                    <iconify-icon id="hidePassword" icon="heroicons-outline:eye-off"></iconify-icon>
-                    <iconify-icon class="hidden" id="showPassword" icon="heroicons-outline:eye"></iconify-icon>
-                </span>
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <span class="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-full border-l border-l-slate-200 dark:border-l-slate-700 flex items-center justify-center cursor-pointer dark:text-white" id="toggleIcon">
+                <iconify-icon id="hidePassword" icon="heroicons-outline:eye-off"></iconify-icon>
+                <iconify-icon class="hidden" id="showPassword" icon="heroicons-outline:eye"></iconify-icon>
+            </span>
         </div>
+        <x-input-error :messages="$errors->get('password')" class="mt-2" />
     </div>
 
     {{-- Confirm Password --}}
@@ -60,12 +60,12 @@
                 id="password_confirmation"
                 class="form-control py-2 passwordfield @error('password_confirmation') !border !border-red-500 @enderror"
                 placeholder="{{ __('Enter your confirm password') }}" required autocomplete="password_confirmation">
-                <span class="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-full border-l border-l-slate-200 dark:border-l-slate-700 flex items-center justify-center cursor-pointer dark:text-white" id="toggleIcon">
-                    <iconify-icon id="hidePassword" icon="heroicons-outline:eye-off"></iconify-icon>
-                    <iconify-icon class="hidden" id="showPassword" icon="heroicons-outline:eye"></iconify-icon>
-                </span>
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+            <span class="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-full border-l border-l-slate-200 dark:border-l-slate-700 flex items-center justify-center cursor-pointer dark:text-white" id="toggleIcon">
+                <iconify-icon id="hidePassword" icon="heroicons-outline:eye-off"></iconify-icon>
+                <iconify-icon class="hidden" id="showPassword" icon="heroicons-outline:eye"></iconify-icon>
+            </span>
         </div>
+        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
     </div>
 
     {{-- Terms & Condition Checkbox --}}

@@ -13,7 +13,7 @@
             <div class="bg-no-repeat bg-cover bg-center p-5 rounded-[6px] relative" style="background-image: url(images/all-img/widget-bg-2.png)">
                 <div>
                     <h4 class="text-xl font-medium text-white mb-2">
-                        <span class="block font-normal">{{ __('Hello') }},</span>
+                        <span class="block font-normal">Selamat {{ $data['greetings'] }},</span>
                         <span class="block">{{ auth()->user()->name }}</span>
                     </h4>
                     <p class="text-sm text-white font-normal">{{ __('Welcome to ') }} {{ config('app.name', 'SiTani') }}</p>
@@ -53,7 +53,7 @@
                                                 <div class="flex items-center">
                                                     <div class="flex-none">
                                                         <div class="w-8 h-8 rounded-[100%] ltr:mr-3 rtl:ml-3">
-                                                            <img class="w-full h-full rounded-[100%] object-cover" src="{{$user->getFirstMediaUrl('profile-image', 'preview') ?:Avatar::create($user->name)->toBase64() }}" />
+                                                            <img class="w-full h-full rounded-[100%] object-cover" src="{{Avatar::create($user->name)->toBase64() }}" />
                                                         </div>
                                                     </div>
                                                     <div class="flex-1 text-start">

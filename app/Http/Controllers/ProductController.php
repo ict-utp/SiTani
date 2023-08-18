@@ -143,7 +143,14 @@ class ProductController extends Controller
             ],
         ];
 
+        $productCategories = ProductCategories::all();
+        $productTypes = ProductType::all();
+        $owners = Owner::all();
+
         return view('products.edit', [
+            'productCategories' => $productCategories,
+            'productTypes' => $productTypes,
+            'owners' => $owners,
             'product' => $product,
             'breadcrumbItems' => $breadcrumbsItems,
             'pageTitle' => 'Edit Product'

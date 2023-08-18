@@ -8,11 +8,11 @@
                 class="form-control py-2 @error('email') !border !border-red-500 @enderror"
                 placeholder="{{ __('Enter your email account') }}" autofocus
                 value="{{ old('email') }}">
-                <span class="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-full border-l border-l-slate-200 dark:border-l-slate-700 flex items-center justify-center dark:text-white">
+            <span class="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-full border-l border-l-slate-200 dark:border-l-slate-700 flex items-center justify-center dark:text-white">
                     <iconify-icon icon="heroicons-outline:mail"></iconify-icon>
-                </span>
-            <x-input-error :messages="$errors->get('email')" class="mt-2"/>
+            </span>
         </div>
+        <x-input-error :messages="$errors->get('email')" class="mt-2"/>
     </div>
 
     {{-- Password --}}
@@ -24,8 +24,8 @@
                 <iconify-icon id="hidePassword" icon="heroicons-outline:eye-off"></iconify-icon>
                 <iconify-icon class="hidden" id="showPassword" icon="heroicons-outline:eye"></iconify-icon>
             </span>
-            <x-input-error :messages="$errors->get('password')" class="mt-2"/>
         </div>
+        <x-input-error :messages="$errors->get('password')" class="mt-2"/>
     </div>
 
 
