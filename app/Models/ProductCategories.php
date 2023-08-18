@@ -26,4 +26,9 @@ class ProductCategories extends Model
     protected $casts = [
         'id' => 'integer',
     ];
+
+    public function product()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

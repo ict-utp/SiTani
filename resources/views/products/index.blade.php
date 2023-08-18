@@ -17,21 +17,21 @@
             <header class=" card-header noborder">
                 <div class="justify-end flex gap-3 items-center flex-wrap">
                     {{-- Create Button start--}}
-                    @can('user create')
-                    <a class="btn inline-flex justify-center btn-dark rounded-[25px] items-center !p-2 !px-3" href="{{ route('users.create') }}">
+                    @can('product create')
+                    <a class="btn inline-flex justify-center btn-dark rounded-[25px] items-center !p-2 !px-3" href="{{ route('products.create') }}">
                         <iconify-icon icon="ic:round-plus" class="text-lg mr-1">
                         </iconify-icon>
                         {{ __('New') }}
                     </a>
                     @endcan
                     {{--Refresh Button start--}}
-                    <a class="btn inline-flex justify-center btn-dark rounded-[25px] items-center !p-2.5" href="{{ route('users.index') }}">
+                    <a class="btn inline-flex justify-center btn-dark rounded-[25px] items-center !p-2.5" href="{{ route('products.index') }}">
                         <iconify-icon icon="mdi:refresh" class="text-xl "></iconify-icon>
                     </a>
                 </div>
                 <div class="justify-center flex flex-wrap sm:flex items-center lg:justify-end gap-3">
                     <div class="relative w-full sm:w-auto flex items-center">
-                        <form id="searchForm" method="get" action="{{ route('users.index') }}">
+                        <form id="searchForm" method="get" action="{{ route('products.index') }}">
                             <input name="q" type="text" class="inputField pl-8 p-2 border border-slate-200 dark:border-slate-700 rounded-md dark:bg-slate-900" placeholder="Search" value="{{ request()->q }}">
                         </form>
                         <iconify-icon class="absolute text-textColor left-2 dark:text-white" icon="quill:search-alt"></iconify-icon>
@@ -49,16 +49,16 @@
                                             {{ __('ID') }}
                                         </th>
                                         <th scope="col" class="table-th ">
-                                            {{ __('Name') }}
+                                            {{ __('Title') }}
                                         </th>
                                         <th scope="col" class="table-th ">
-                                            {{ __('Email') }}
+                                            {{ __('Quantity') }}
                                         </th>
                                         <th scope="col" class="table-th ">
-                                            {{ __('Member Since') }}
+                                            {{ __('Period') }}
                                         </th>
                                         <th scope="col" class="table-th ">
-                                            {{ __('Verified') }}
+                                            {{ __('Addres') }}
                                         </th>
                                         <th scope="col" class="table-th w-20">
                                             {{ __('Action') }}
@@ -66,58 +66,43 @@
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
-                                    @forelse ($users as $user)
+                                    @forelse ($products as $product)
                                     <tr>
                                         <td class="table-td">
-                                            # {{ $user->id }}
+                                            # {{ $product->id }}
                                         </td>
                                         <td class="table-td">
-                                            <div class="flex items-center">
-                                                <div class="flex-none">
-                                                    <div class="w-8 h-8 rounded-[100%] ltr:mr-3 rtl:ml-3">
-                                                        <img class="w-full h-full rounded-[100%] object-cover" src="{{Avatar::create($user->name)->toBase64() }}" />
-                                                    </div>
-                                                </div>
-                                                <div class="flex-1 text-start">
-                                                    <h4 class="text-sm font-medium text-slate-600 whitespace-nowrap normal-case">
-                                                        {{ $user->name }}
-                                                    </h4>
-                                                </div>
-                                            </div>
+                                            <p class="normal-case">{{ $product->title }}</p>
                                         </td>
                                         <td class="table-td">
-                                            <p class="normal-case">{{ $user->email }}</p>
+                                            <p class="normal-case">{{ $product->quantity ?: 'N/A'}}</p>
                                         </td>
                                         <td class="table-td">
-                                            {{ $user->created_at->diffForHumans() }}
+                                            <p class="normal-case">{{ $product->period ?: 'N/A'}}</p>
                                         </td>
                                         <td class="table-td">
-                                            @if($user->email_verified_at)
-                                            <span class="badge bg-primary-500 text-white capitalize">{{ __('YES') }}</span>
-                                            @else
-                                            <span class="badge bg-danger-500 text-white capitalize">{{ __('NO') }}</span>
-                                            @endif
+                                            <p class="normal-case">{{ $product->address ?: 'N/A'}}</p>
                                         </td>
                                         <td class="table-td">
                                             <div class="flex space-x-3 rtl:space-x-reverse">
                                                 {{--view--}}
-                                                @can('user show')
-                                                <a class="action-btn" href="{{ route('users.show', $user) }}">
+                                                @can('product show')
+                                                <a class="action-btn" href="{{ route('products.show', $product) }}">
                                                     <iconify-icon icon="heroicons:eye"></iconify-icon>
                                                 </a>
                                                 @endcan
                                                 {{--Edit--}}
-                                                @can('user update')
-                                                <a class="action-btn" href="{{ route('users.edit', ['user'=>$user]) }}">
+                                                @can('product update')
+                                                <a class="action-btn" href="{{ route('products.edit', ['product'=>$product]) }}">
                                                     <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
                                                 </a>
                                                 @endcan
                                                 {{--delete--}}
-                                                @can('user delete')
-                                                <form id="deleteForm{{ $user->id }}" method="POST" action="{{ route('users.destroy', $user) }}">
+                                                @can('product delete')
+                                                <form id="deleteForm{{ $product->id }}" method="POST" action="{{ route('products.destroy', $product) }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a class="action-btn cursor-pointer" onclick="sweetAlertDelete(event, 'deleteForm{{ $user->id }}')" type="submit">
+                                                    <a class="action-btn cursor-pointer" onclick="sweetAlertDelete(event, 'deleteForm{{ $product->id }}')" type="submit">
                                                         <iconify-icon icon="heroicons:trash"></iconify-icon>
                                                     </a>
                                                 </form>
@@ -135,7 +120,7 @@
                                     @endforelse
                                 </tbody>
                             </table>
-                            <x-table-footer :per-page-route-name="'users.index'" :data="$users" />
+                            <x-table-footer :per-page-route-name="'products.index'" :data="$products" />
                         </div>
                     </div>
                 </div>

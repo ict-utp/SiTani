@@ -40,7 +40,7 @@
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a href="#" class="navItem">{{ __('Product') }}</a>
+                        <a href="{{ route('products.index') }}" class="navItem {{ (request()->is('products*')) ? 'active' : '' }}">{{ __('Product') }}</a>
                     </li>
                     <li>
                         <a href="{{ route('product-categories.index') }}" class="navItem {{ (request()->is('product-categories*')) ? 'active' : '' }}">{{ __('Categories') }}

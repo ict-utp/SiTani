@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SetLocaleController;
 use App\Http\Controllers\PermissionController;
@@ -28,6 +29,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::resource('owners', OwnerController::class)->except('show');
     Route::resource('product-types', ProductTypeController::class)->except('show');
     Route::resource('product-categories', ProductCategoriesController::class)->except('show');
+    Route::resource('products', ProductController::class)->except('show');
 
     // User
     Route::resource('users', UserController::class);
