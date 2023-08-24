@@ -113,7 +113,12 @@ class ProductController extends Controller
     {
         $product = Product::create($request->validated());
 
-        return redirect()->route('products.index')->with('message', 'Product created successfully');
+        if($request->hasFile('photo') && $request->file('photo')->isValid()) {
+            $product->clearMediaCollection('product-image');
+            $product->addMediaFromRequest('photo')->toMediaCollection('product-image');
+        }
+
+        return to_route('products.index')->with('message', 'Product created successfully');
     }
 
     /**
@@ -167,9 +172,15 @@ class ProductController extends Controller
      */
     public function update(ProductUpdateRequest $request, Product $product)
     {
-        $product->update($request->validated());
 
-        return redirect()->route('products.index')->with('message', 'Product updated successfully');
+        $product->update($request->safe(['title', 'quantity', 'period', 'address', 'description', 'product_categories_id', 'product_type_id', 'owner_id']));
+
+        if($request->hasFile('photo') && $request->file('photo')->isValid()) {
+            $product->clearMediaCollection('product-image');
+            $product->addMediaFromRequest('photo')->toMediaCollection('product-image');
+        }
+
+        return to_route('products.index')->with('message', 'Product updated successfully');
     }
 
     /**
@@ -183,6 +194,6 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('products.index')->with('message', 'Product deleted successfully');
+        return to_route('products.index')->with('message', 'Product deleted successfully');
     }
 }
