@@ -4,10 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Product extends Model
+class Product extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +26,8 @@ class Product extends Model
         'description',
         'product_categories_id',
         'product_type_id',
-        'owner_id'
+        'owner_id',
+        'photo',
     ];
 
     /**
@@ -33,6 +38,14 @@ class Product extends Model
     protected $casts = [
         'id' => 'integer',
     ];
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this
+            ->addMediaConversion('preview')
+            ->fit(Manipulations::FIT_CROP, 300, 300)
+            ->nonQueued();
+    }
 
     public function owner()
     {

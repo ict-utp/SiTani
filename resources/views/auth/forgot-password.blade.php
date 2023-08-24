@@ -30,9 +30,8 @@
                             <iconify-icon icon="heroicons-outline:mail"></iconify-icon>
                         </span>
                     </div>
-                    
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
                 <button type="submit" class="btn inline-flex justify-center btn-dark items-center w-full text-center">
                     <iconify-icon icon="mingcute:send-fill" class="ltr:mr-2 rtl:ml-2"></iconify-icon> 

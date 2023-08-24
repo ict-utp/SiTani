@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -39,6 +40,8 @@ class HomeController extends Controller
         ];
 
         $data = ['users' => User::latest()->paginate(5),
+                'totalUsers' => User::all(),
+                'products' => Product::all(),
                 'greetings' => $this->Greetings(Carbon::now()->format('H'))];
 
         return view('dashboards.index', [

@@ -32,6 +32,7 @@ class ProductUpdateRequest extends FormRequest
             'product_categories_id' => ['required', 'integer'],
             'product_type_id' => ['required', 'integer'],
             'owner_id' => ['required', 'integer'],
+            'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ];
     }
 }

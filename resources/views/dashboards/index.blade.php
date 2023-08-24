@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout :page-title="$pageTitle">
 
     <!-- START:: Breadcrumbs -->
     <div class="mb-6">
@@ -17,6 +17,42 @@
                         <span class="block">{{ auth()->user()->name }}</span>
                     </h4>
                     <p class="text-sm text-white font-normal">{{ __('Welcome to ') }} {{ config('app.name', 'SiTani') }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="2xl:col-span-3 lg:col-span-4 col-span-12">
+            <div class="bg-no-repeat bg-cover bg-center px-5 py-8 rounded-[6px] relative flex items-center" style="background-image: url(images/all-img/widget-bg-6.png)">
+                <div class="flex-1">
+                  <div class="max-w-[180px]">
+                    <h4 class="text-xl font-medium text-white mb-2">
+                      <span class="block font-normal">
+                        Total Users,
+                      </span>
+                      <span class="block text-sm">{{ $data['totalUsers']->count() }} {{ __('Users') }}</span>
+                    </h4>
+                  </div>
+                </div>
+                <div class="flex-none">
+                    <a href="{{ route('users.index') }}" class="btn-light inline-flex justify-center items-center bg-white btn-sm btn"><iconify-icon icon="solar:eye-bold-duotone" class="ltr:mr-2 rtl:ml-2"></iconify-icon> View details</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="2xl:col-span-3 lg:col-span-4 col-span-12">
+            <div class="bg-no-repeat bg-cover bg-center px-5 py-8 rounded-[6px] relative flex items-center" style="background-image: url(images/all-img/widget-bg-6.png)">
+                <div class="flex-1">
+                  <div class="max-w-[180px]">
+                    <h4 class="text-xl font-medium text-white mb-2">
+                      <span class="block font-normal">
+                          Total Products,
+                      </span>
+                      <span class="block text-sm">{{ $data['products']->count() }} {{ __('Products') }}</span>
+                    </h4>
+                  </div>
+                </div>
+                <div class="flex-none">
+                    <a href="{{ route('products.index') }}" class="btn-light inline-flex justify-center items-center bg-white btn-sm btn"><iconify-icon icon="solar:eye-bold-duotone" class="ltr:mr-2 rtl:ml-2"></iconify-icon> View details</a>
                 </div>
             </div>
         </div>

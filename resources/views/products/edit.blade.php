@@ -11,7 +11,7 @@
             <div class="card-body flex flex-col p-6">
                 <div class="card-text h-full">
                     {{--Create product form start--}}
-                    <form method="POST" action="{{ route('products.update', $product) }}" class="space-y-4">
+                    <form method="POST" action="{{ route('products.update', $product) }}" class="space-y-4" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="bg-white dark:bg-slate-800 pb-6">
@@ -148,6 +148,16 @@
                                     </div>
                                 </div>
                                 {{--Owner input end--}}
+
+                                {{-- Photo input start --}}
+                                <div class="formGroup">
+                                    <label for="photo" class="form-label">{{ __('Photo Product') }}</label>
+                                    <div class="input-area relative">
+                                        <input name="photo" type="file" placeholder="Photo Product" class="form-control p-[0.565rem] pl-2">
+                                    </div>
+                                    <x-input-error :messages="$errors->get('photo')" class="mt-2" />
+                                </div>
+                                {{-- Photo input end --}}
 
                             </div>
                             <button type="submit" class="btn inline-flex justify-center btn-dark mt-4 w-full">

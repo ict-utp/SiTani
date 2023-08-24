@@ -1,19 +1,36 @@
 models:
-  Post:
-    title: string:400
-    content: longtext
-    published_at: nullable timestamp
+  Product:
+    title: string:255
+    quantity: string:255
+    period: string:100
+    address: text
+    description: longtext
     relationships:
-      belongsTo: User
+      hasOne: ProductType, ProductCategories, Owner
+      hasMany: Media
 
 controllers:
-  Post:
+  Product:
     index:
       query: all
-      render: post.index with:posts
+      render: products.index with:products
+    
+    create:
+      render: products.create
 
     store:
-      validate: title, content
-      save: post
-      flash: post.title
-      redirect: post.index
+      validate: title, quantity, period, address, description
+      save: products
+      redirect: products.index
+
+    edit:
+      render: products.edit with:products
+    
+    update:
+      validate: title, quantity, period, address, description
+      update: products
+      redirect: product-categories.index
+
+    destroy:
+      delete: products
+      redirect: products.index
